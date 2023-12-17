@@ -3,7 +3,7 @@ package main.java.atb.component;
 import main.java.atb.Main;
 
 public class Authenticator {
-    private static String PASSWORD = "12345";
+    private static  final String PASSWORD = "12345";
     public static boolean auth(){
         boolean accept = false;
         for (int i = 0; i < 3; i++) {

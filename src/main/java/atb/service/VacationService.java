@@ -5,7 +5,7 @@ import main.java.atb.model.Seller;
 import main.java.atb.model.Vacation;
 
 public class VacationService {
-    private static String SELLER_TYPE = "seller";
+    private static final String SELLER_TYPE = "seller";
     public Vacation registerWorkerForVacation(){
         Vacation vacation = new Vacation();
         System.out.println("Type (seller / cleaner / supervisor / administrator / other): ");

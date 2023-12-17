@@ -6,8 +6,8 @@ import main.java.atb.service.VacationService;
 import main.java.atb.service.WorkerService;
 
 public class AppRunner {
-    private WorkerService workerService = new WorkerService();
-     private VacationService vacationService = new VacationService();
+    private final WorkerService workerService = new WorkerService();
+     private final VacationService vacationService = new VacationService();
 
     public void run(){
         if(Authenticator.auth()){
@@ -20,6 +20,8 @@ public class AppRunner {
                 worker.setVacation(vacation);
                 vacation.setWorkerName(worker.getName() + " " + worker.getSurName() );
                 System.out.println("Vacation has been added");
+
+                System.out.println(worker);
             }
         }
     }
