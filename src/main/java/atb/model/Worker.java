@@ -2,7 +2,7 @@ package main.java.atb.model;
 
 import java.util.Objects;
 
-public class Worker {
+public  class Worker {
     private String name;
     private String surName;
     private String email;

@@ -17,9 +17,13 @@ public class AppRunner {
                 System.out.println("Add vacation for worker");
 
                 Vacation vacation = vacationService.registerWorkerForVacation();
-                worker.setVacation(vacation);
-                vacation.setWorkerName(worker.getName() + " " + worker.getSurName() );
-                System.out.println("Vacation has been added");
+
+                if(vacation!=null){
+                    worker.setVacation(vacation);
+                    vacation.setWorkerName(worker.getName() + " " + worker.getSurName() );
+                    System.out.println("Vacation has been added");
+                }
+
 
                 System.out.println(worker);
             }
