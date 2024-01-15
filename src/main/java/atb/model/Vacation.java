@@ -9,7 +9,7 @@ public abstract class Vacation {
     private String workerName;
     private String bonusOnTheNumberOfSales;
 
-    public String getBonusOnTheNumberOfSales() {
+    public Seller.BonusOnTheNumberOfSales getBonusOnTheNumberOfSales() {
         return bonusOnTheNumberOfSales;
     }
 

@@ -42,7 +42,9 @@ public class VacationService {
 
         if(type.equals(SELLER_TYPE)){
             System.out.println("Bonus On The Number Of Sales (1.1x / 1.3x / 1.5x)");
-            ((Seller) vacation).setBonusOnTheNumberOfSales(Main.SCANNER.nextLine());
+            double bonusOnTheNumberOfSales = Main.SCANNER.nextDouble();
+
+            ((Seller) vacation).setBonusOnTheNumberOfSales(Seller.BonusOnTheNumberOfSales.valueOf(String.valueOf(bonusOnTheNumberOfSales)));
         }
         return vacation;
 

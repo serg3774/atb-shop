@@ -1,23 +1,35 @@
 package main.java.atb.model;
 
 public class Seller extends  Vacation{
-    public static final String Big = "1.5x";
-    public static final String Medium = "1.3x ";
-    public static final String Small = " 1.1x";
 
-
-    private String bonusOnTheNumberOfSales;
+    private BonusOnTheNumberOfSales bonusOnTheNumberOfSales;
 
     public Seller(){}
-    public Seller(String salary){
+    public Seller(BonusOnTheNumberOfSales salary){
         this.bonusOnTheNumberOfSales = salary;
     }
 
-    public String getBonusOnTheNumberOfSales() {
+    public BonusOnTheNumberOfSales getBonusOnTheNumberOfSales() {
         return bonusOnTheNumberOfSales;
     }
 
-    public void setBonusOnTheNumberOfSales(String bonusOnTheNumberOfSales) {
+    public void setBonusOnTheNumberOfSales(BonusOnTheNumberOfSales bonusOnTheNumberOfSales) {
         this.bonusOnTheNumberOfSales = bonusOnTheNumberOfSales;
+    }
+
+    public enum BonusOnTheNumberOfSales{
+        Big(3),
+        Medium(2),
+        Small(1),
+        UNKNOWN(0)
+        ;
+        private final int value;
+        BonusOnTheNumberOfSales(int value){
+            this.value=value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }
