@@ -1,12 +1,17 @@
 package main.java.atb.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Objects;
 
 public  class Worker {
+    private static  final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
     private String name;
     private String surName;
     private String email;
     private Vacation vacation;
+    private final LocalDateTime registrationDate = LocalDateTime.now();
 
     @Override
     public String toString(){
@@ -15,6 +20,7 @@ public  class Worker {
                 + ", surname = " +surName
                 + ", email = " +email
                 + ",\n\tvacation = " +vacation
+                + ",\n\tregistrationDate = " +registrationDate.format(FORMATTER)
                 + "\n}";
     }
 
