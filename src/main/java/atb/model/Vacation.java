@@ -1,12 +1,21 @@
 package main.java.atb.model;
 
-public class Vacation {
+public abstract class Vacation {
     private String vacationName;
     private String responsibilities;
     private String workQualityLevel;
     private int salary;
     private int durationOfHoliday;
     private String workerName;
+    private String bonusOnTheNumberOfSales;
+
+    public Seller.BonusOnTheNumberOfSales getBonusOnTheNumberOfSales() {
+        return bonusOnTheNumberOfSales;
+    }
+
+    public void setBonusOnTheNumberOfSales(String bonusOnTheNumberOfSales) {
+        this.bonusOnTheNumberOfSales = bonusOnTheNumberOfSales;
+    }
 
     public String getWorkerName() {
         return workerName;

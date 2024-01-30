@@ -1,46 +1,31 @@
 package main.java.atb.service;
 
 import main.java.atb.Main;
+import main.java.atb.model.Consultant;
 import main.java.atb.model.Seller;
 import main.java.atb.model.Vacation;
 
 public class VacationService {
-    private static String SELLER_TYPE = "seller";
+    private static final String SELLER_TYPE = "seller";
+    private static final String CONSULTANT_TYPE = "consultant";
     public Vacation registerWorkerForVacation(){
-        Vacation vacation = new Vacation();
-        System.out.println("Type (seller / cleaner / supervisor / administrator / other): ");
+        Vacation vacation = null;
+        System.out.println("Type (seller / consultant): ");
         String type = Main.SCANNER.nextLine();
         vacation.setVacationName(type);
 
-        if(SELLER_TYPE.equals(type)){
-            vacation = buildSeller();
+        if(SELLER_TYPE.equals(type) || CONSULTANT_TYPE.equals(type)){
+            vacation = buildVacation(type);
 
         }else {
-           vacation =  buildVacation(type);
+            System.out.println("Unknown vacation: "+ type);
         }
         return vacation;
     }
 
-    private Seller buildSeller() {
-        Vacation vacation = buildVacation(SELLER_TYPE);
-        Seller seller = vacationToSeller(vacation);
-
-        System.out.println("Bonus On The Number Of Sales (1.2x / 1.3x / 1.4x / 1.5x)");
-        seller.setBonusOnTheNumberOfSales(Main.SCANNER.nextDouble());
-        return seller;
-    }
-
-    private Seller vacationToSeller(Vacation vacation) {
-        Seller seller = new Seller();
-        seller.setSalary(vacation.getSalary());
-        seller.setResponsibilities(vacation.getResponsibilities());
-        seller.setWorkQualityLevel(vacation.getWorkQualityLevel());
-        seller.setDurationOfHoliday(vacation.getDurationOfHoliday());
-        return seller;
-    }
 
     private Vacation buildVacation(String type) {
-        Vacation vacation = new Vacation();
+        Vacation vacation = type.equals(SELLER_TYPE) ? new Seller(): new Consultant();
         vacation.setVacationName(type);
 
         System.out.println("Responsibilities");
@@ -54,6 +39,14 @@ public class VacationService {
 
         System.out.println("DurationOfHoliday");
         vacation.setDurationOfHoliday(Main.SCANNER.nextInt());
+
+        if(type.equals(SELLER_TYPE)){
+            System.out.println("Bonus On The Number Of Sales (1.1x / 1.3x / 1.5x)");
+            double bonusOnTheNumberOfSales = Main.SCANNER.nextDouble();
+
+            ((Seller) vacation).setBonusOnTheNumberOfSales(Seller.BonusOnTheNumberOfSales.valueOf(String.valueOf(bonusOnTheNumberOfSales)));
+        }
         return vacation;
+
     }
 }
