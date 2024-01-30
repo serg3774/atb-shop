@@ -2,7 +2,9 @@ package main.java.atb.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public  class Worker {
@@ -10,7 +12,7 @@ public  class Worker {
     private String name;
     private String surName;
     private String email;
-    private Vacation vacation;
+    private List<Vacation> vacations = new ArrayList<>();
     private final LocalDateTime registrationDate = LocalDateTime.now();
 
     @Override
@@ -19,7 +21,7 @@ public  class Worker {
                 +"\n\tname = "+name
                 + ", surname = " +surName
                 + ", email = " +email
-                + ",\n\tvacation = " +vacation
+                + ",\n\tvacations = " +vacations
                 + ",\n\tregistrationDate = " +registrationDate.format(FORMATTER)
                 + "\n}";
     }
@@ -29,12 +31,12 @@ public  class Worker {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Worker worker = (Worker) o;
-        return Objects.equals(name, worker.name) && Objects.equals(surName, worker.surName) && Objects.equals(email, worker.email) && Objects.equals(vacation, worker.vacation);
+        return Objects.equals(name, worker.name) && Objects.equals(surName, worker.surName) && Objects.equals(email, worker.email) && Objects.equals(vacations, worker.vacations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surName, email, vacation);
+        return Objects.hash(name, surName, email, vacations);
     }
 
     public void setName(String name) {
@@ -61,11 +63,15 @@ public  class Worker {
         return email;
     }
 
-    public Vacation getVacation() {
-        return vacation;
+    public List<Vacation> getVacation() {
+        return vacations;
     }
 
-    public void setVacation(Vacation vacation) {
-        this.vacation = vacation;
+    public void setVacation(List<Vacation> vacation) {
+        this.vacations = vacation;
+    }
+
+    public void addVacation(Vacation vacation){
+        vacations.add(vacation);
     }
 }
